@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>研究室モニター</title>
   <meta charset="UTF-8">
@@ -24,7 +25,7 @@
     }
 
     /* バナー内の要素をすべて選択 */
-    .news-banner__content > * {
+    .news-banner__content>* {
       display: inline-block;
     }
 
@@ -33,22 +34,73 @@
       0% {
         transform: translateX(0);
       }
+
       100% {
         transform: translateX(-100%);
       }
     }
+
+    .max_temp {
+    display: inline-block !important
+  }
+
+  .min_temp {
+    display: inline-block !important
+  }
+
+  .temp {
+    display: block !important
+  }
+
+  .rain_s {
+    display: block !important
+  }
+
+  .pop-rain {
+    undefined
+  }
+
+  .speed-wind {
+    undefined
+  }
+
+  .deg-wind {
+    undefined
+  }
+
+  .w_snow {
+    undefined
+  }
+
+  .w_bg {
+    background: linear-gradient(to right, #ffffff, #fff)
+  }
   </style>
+
+<link rel="stylesheet" type="text/css"
+href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css">
+<link rel="stylesheet" type="text/css"
+href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons-wind.css">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 
 <body>
   <h1>今後整備していく予定です。</h1>
   <!-- リンクなし -->
   <p id="now_time"></p>
-  <img src="https://www.city.kobe.lg.jp/documents/7150/s14e.png"><div class="news-banner">
-      <div class="news-banner__content">
+  <img src="./data/station_info/Chikatetsu_title.png" width=600 height=200><br>
+  <img src="./data/station_info/Chikatetsu_schedule.png" width=600 height=300>
+  <div id="weather-wrapper">
+    <div id="weather1"></div>
+    <div id="weather2"></div>
+  </div>
+
+  <div class="news-banner">
+    <div class="news-banner__content">
       <h2>開発中ですわよ　開発中ですわよ　開発中ですわよ　開発中ですわよ　開発中ですわよ　開発中ですわよ　開発中ですわよ　開発中ですわよ</h2>
     </div>
   </div>
+
 </body>
 <script>
   const now = new Date();
@@ -56,5 +108,14 @@
   var p_tag = document.getElementById("now_time");
   p_tag.innerText = now;
 </script>
-  
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script
+  type="text/javascript">weather_value = 7; lat = 34.68325; lon = 134.981628; inputText1 = "兵庫県神戸市西区"; search_add = "兵庫県神戸市西区";</script>
+<script src="https://sitecreation.co.jp/wp-content/themes/emanon-premium-child/tpl/weather.js"></script>
+<link id="PageStyleSheet" rel="stylesheet"
+  href="https://sitecreation.co.jp/wp-content/themes/emanon-premium-child/tpl/style.css">
+
+
 </html>
