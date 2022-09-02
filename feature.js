@@ -12,18 +12,10 @@ setInterval('showClock1()', 1000);
 const url = 'https://www.train-guide.westjr.co.jp/api/v3/area_kinki_trafficinfo.json';
 callApi(url);
 
-function callApi(url) {
-  axios.get(url)
-  .then(response => {
-     console.log(JSON.stringify(response.data));
-  })
-  .catch(error => {
-    console.error(error);
-  })
-  .finally(() => {
-    // skip
-  });
-  document.getElementById("DelayInfo").innerHTML = response.data.JSON()
+async function callApi(url) {
+  const res = await fetch(url, {headers:{"Content-Type":"application/json"}});
+  console.log(res)
+  document.getElementById("DelayInfo").innerHTML = res.status()
 };
   
 // noticeDelay()
