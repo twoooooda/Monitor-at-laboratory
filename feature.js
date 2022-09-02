@@ -9,14 +9,22 @@ function showClock1() {
 
 setInterval('showClock1()', 1000);
 
-let url = 'https://www.train-guide.westjr.co.jp/api/v3/area_kinki_trafficinfo.json';
+const url = 'https://www.train-guide.westjr.co.jp/api/v3/area_kinki_trafficinfo.json';
 callApi(url);
 
-async function callApi(url) {
-    const res = await fetch(url, {method: 'GET',headers: {'Content-Type': 'application/json'}});
-    const users = await res.json();
-    console.log(users)
-  };
+function callApi(url) {
+  axios.get(url)
+  .then(response => {
+     console.log(JSON.stringify(response.data));
+  })
+  .catch(error => {
+    console.error(error);
+  })
+  .finally(() => {
+    // skip
+  });
+  document.getElementById("DelayInfo").innerHTML = response.data.JSON()
+};
   
 // noticeDelay()
 
