@@ -1,95 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
   <title>研究室モニター</title>
   <meta charset="UTF-8">
-  <style>
-    /* バナー本体 */
-    .news-banner {
-      display: block;
-      height: 50px;
-      width: 100%;
-      background-color: orange;
-      overflow: hidden;
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css">
 
-    /* バナー内コンテンツ */
-    .news-banner__content {
-      display: inline-block;
-      color: #fff;
-      line-height: 10px;
-      padding-left: 100%;
-      white-space: nowrap;
-      animation: animate-banner 20s linear infinite;
-    }
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons-wind.css">
 
-    /* バナー内の要素をすべて選択 */
-    .news-banner__content>* {
-      display: inline-block;
-    }
-
-    /* 横にスクロールさせるアニメーション */
-    @keyframes animate-banner {
-      0% {
-        transform: translateX(0);
-      }
-
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-
-    .max_temp {
-    display: inline-block !important
-  }
-
-  .min_temp {
-    display: inline-block !important
-  }
-
-  .temp {
-    display: block !important
-  }
-
-  .rain_s {
-    display: block !important
-  }
-
-  .pop-rain {
-    undefined
-  }
-
-  .speed-wind {
-    undefined
-  }
-
-  .deg-wind {
-    undefined
-  }
-
-  .w_snow {
-    undefined
-  }
-
-  .w_bg {
-    background: linear-gradient(to right, #ffffff, #fff)
-  }
-  </style>
-
-<link rel="stylesheet" type="text/css"
-href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css">
-<link rel="stylesheet" type="text/css"
-href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons-wind.css">
-<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 
 <body>
-  <p>今後整備していく予定です。<p>
-  <!-- リンクなし -->
-  <p id="now_time"></p>
+  <p>今後整備していく予定です。
+  <p>
+  <p id="RealtimeClockArea"></p>
   <img src="./data/station_info/Chikatetu_schedule.png">
-  <iframe width="784" height="441" src="https://www.youtube.com/embed/coYw-eVU0Ks?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  <iframe width="784" height="441" src="https://www.youtube.com/embed/coYw-eVU0Ks?autoplay=1&mute=1"
+    title="YouTube video player" frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>
   <div id="weather-wrapper">
     <div id="weather1"></div>
     <div id="weather2"></div>
@@ -101,15 +35,11 @@ href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-ic
     </div>
   </div>
 
+  <script tyoe="text/javascript" src="./feature.js" charset="shift_jis"></script>
 </body>
-<script>
-  const now = new Date();
-  console.log(now);
-  var p_tag = document.getElementById("now_time");
-  p_tag.innerText = now;
-</script>
 
 
+<!--天気予報の埋め込み-->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script
   type="text/javascript">weather_value = 7; lat = 34.68325; lon = 134.981628; inputText1 = "兵庫県神戸市西区"; search_add = "兵庫県神戸市西区";</script>
