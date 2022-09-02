@@ -3,21 +3,21 @@ function showClock1() {
     var nowHour = nowTime.getHours();
     var nowMin = nowTime.getMinutes();
     var nowSec = nowTime.getSeconds();
-    var msg = "åªç›éûçèÇÕÅA" + nowHour + ":" + nowMin + ":" + nowSec + " Ç≈Ç∑ÅB";
+    var msg = "ÁèæÂú®ÊôÇÂàª„ÅØ" + nowHour + ":" + nowMin + ":" + nowSec + "„Åß„ÅôÔºé";
     document.getElementById("RealtimeClockArea").innerHTML = msg;
   }
 
 setInterval('showClock1()', 1000);
 
-// let url = 'https://www.train-guide.westjr.co.jp/api/v3/area_kinki_trafficinfo.json';
+let url = 'https://www.train-guide.westjr.co.jp/api/v3/area_kinki_trafficinfo.json';
+callApi(url);
 
-// async function callApi(url) {
-//     const res = await fetch(url, {method: 'GET',headers: {'Content-Type': 'application/json'}});
-//     const users = await res.json();
-//     console.log(users)
-//   };
+async function callApi(url) {
+    const res = await fetch(url, {method: 'GET',headers: {'Content-Type': 'application/json'}});
+    const users = await res.json();
+    console.log(users)
+  };
   
-//   callApi(url);
 // noticeDelay()
 
 // async function noticeDelay(){
