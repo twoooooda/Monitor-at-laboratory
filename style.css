@@ -12,6 +12,9 @@ h1 {
 
     grid-template-columns: 470px 800px;
     grid-template-rows: 300px 250px 100px;
+
+    gap: 10px 0px;
+    /*c•ûŒü‚É10pxA‰¡•ûŒü‚É0px‚Ì—]”’‚ğw’è‚·‚é*/
 }
 
 .item1 {
