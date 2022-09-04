@@ -37,10 +37,12 @@ function notice_schedule() {
   Now.setMinutes(Now.getMinutes() + 10); //10分後
   var time_train = new Date();
 
+  //休日の場合
   if (Now.getDay() == 0 || Now.getDay() == 6) {
     go = go_holi;
     times = times_holi;
   }
+  //平日の場合
   else {
     go = go_wday;
     times = times_wday;
