@@ -1,23 +1,26 @@
+//どちらも1秒ごとに実行
+setInterval('showClock()', 1000);
+setInterval('notice_schedule()', 1000)
+
+// 桁数が1桁だったら先頭に0を加えて2桁に調整する
 function set2fig(num) {
-  // 桁数が1桁だったら先頭に0を加えて2桁に調整する
   var ret;
   if (num < 10) { ret = "0" + num; }
   else { ret = num; }
   return ret;
 }
 
+//今の時刻を秒刻みで表示する
 function showClock() {
   var nowTime = new Date();
   var nowHour = set2fig(nowTime.getHours());
   var nowMin = set2fig(nowTime.getMinutes());
   var nowSec = set2fig(nowTime.getSeconds());
-  var msg = "現在時刻は、" + nowHour + ":" + nowMin + ":" + nowSec + " です。";
+  var msg = "現在時刻は、<b>" + nowHour + ":" + nowMin + ":" + nowSec + "</b> です。";
   document.getElementById("RealtimeClockArea").innerHTML = msg;
 }
 
-setInterval('showClock()', 1000);
-setInterval('notice_schedule()', 1000)
-
+//神戸市営地下鉄 東行き 平日のダイヤを表示する
 function notice_schedule() {
   //行先と時刻表のリスト
   const go = ['谷上', '谷上', '谷上', '谷上', '谷上', '谷上', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '新神戸', '谷上', '新神戸', '新神戸', '谷上', '新神戸', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '谷上', '新神戸', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '谷上', '谷上', '新神戸', '谷上', '新神戸', '谷上', '谷上', '谷上', '新神戸', '谷上', '新神戸', '谷上', '谷上', '新神戸', '谷上', '新神戸', '谷上', '新神戸', '谷上', '名谷', '新神戸', '新神戸', '名谷', '名谷', '名谷'];
@@ -25,9 +28,10 @@ function notice_schedule() {
 
   //今の時刻と時刻表からの時刻を入れる変数を宣言
   var Now = new Date();
-  Now.setMinutes(Now.getMinutes() + 10);
+  Now.setMinutes(Now.getMinutes() + 10); //10分後
   var time_train = new Date();
 
+  //時刻表から全探索
   for (let i = 0; i < times.length; i++) {
     //時刻表からのデータから:を削除
     var time = times[i].split(":");
@@ -36,8 +40,8 @@ function notice_schedule() {
     time_train.setMinutes(Number(time[1]));
 
     if (Number(time_train) > Number(Now)) {
-      let msg1 = "次に乗れそうな電車は、" + time[0] + ":" + time[1] + "発 " + go[i] + "行き" + "です。";
-      let msg2 = "その次に乗れそうな電車は、" + times[i + 1].split(":")[0] + ":" + times[i + 1].split(":")[1] + "発 " + go[i + 1] + "行き" + "です。";
+      let msg1 = "次に乗れそうな電車は、<br><en><b>" + time[0] + ":" + time[1] + " 発  " + go[i] + "行き</b></en>" + "です。";
+      let msg2 = "その次に乗れそうな電車は、<br><en><b>" + times[i + 1].split(":")[0] + ":" + times[i + 1].split(":")[1] + " 発  " + go[i + 1] + "行き</b></en>" + "です。";
 
       document.getElementById("NextTrain1").innerHTML = msg1;
       document.getElementById("NextTrain2").innerHTML = msg2;
@@ -46,7 +50,11 @@ function notice_schedule() {
 
     else {
       let msg1 = "電車はありません。";
+      let msg2 = "";
+
       document.getElementById("NextTrain1").innerHTML = msg1;
+      document.getElementById("NextTrain2").innerHTML = msg2;
+
     }
   }
 }
