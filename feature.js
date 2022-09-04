@@ -40,8 +40,8 @@ function notice_schedule() {
     time_train.setMinutes(Number(time[1]));
 
     if (Number(time_train) > Number(Now)) {
-      let msg1 = "次に乗れそうな電車は、<br><en><b>" + time[0] + ":" + time[1] + " 発  " + go[i] + "行き</b></en>" + "です。";
-      let msg2 = "その次に乗れそうな電車は、<br><en><b>" + times[i + 1].split(":")[0] + ":" + times[i + 1].split(":")[1] + " 発  " + go[i + 1] + "行き</b></en>" + "です。";
+      let msg1 = "次に乗れそうな地下鉄は、<br><en><b>" + time[0] + ":" + time[1] + " 発  " + go[i] + "行き</b></en>" + "です。";
+      let msg2 = "その次に乗れそうな地下鉄は、<br><en><b>" + times[i + 1].split(":")[0] + ":" + times[i + 1].split(":")[1] + " 発  " + go[i + 1] + "行き</b></en>" + "です。";
 
       document.getElementById("NextTrain1").innerHTML = msg1;
       document.getElementById("NextTrain2").innerHTML = msg2;
