@@ -1,14 +1,22 @@
 @charset "utf-8";
 
+p,
+h1 {
+    /* フォント変更 */
+    font-family: 'Kosugi Maru', sans-serif;
+}
+
 .container {
     display: grid;
     /*「Container」を「Grid Layout」に指定*/
 
     grid-template-columns: 470px 800px;
+    grid-template-rows: 300px 250px 100px;
 }
 
 .item1 {
     line-height: 30px;
+    background-color: #e6e6fa;
 }
 
 .item2 {
@@ -32,7 +40,7 @@ en {
 /* バナー本体 */
 .news-banner {
     display: block;
-    height: 60px;
+    height: 70px;
     width: 100%;
     background-color: orange;
     overflow: hidden;
@@ -64,6 +72,7 @@ en {
     }
 }
 
+/* 天気予報関係 */
 .max_temp {
     display: inline-block !important
 }
@@ -97,5 +106,5 @@ en {
 }
 
 .w_bg {
-    background: linear-gradient(to right, #ffffff, #fff)
+    background: linear-gradient(to right, #00bcd4, #fff)
 }
