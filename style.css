@@ -10,10 +10,10 @@ h1 {
     display: grid;
     /*「Container」を「Grid Layout」に指定*/
 
-    grid-template-columns: 470px 672px;
+    grid-template-columns: 450px 672px;
     grid-template-rows: 300px 250px 100px;
 
-    gap: 30px 0px;
+    gap: 30px 10px;
     /*縦方向に10px、横方向に0pxの余白を指定する*/
 }
 
