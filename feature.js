@@ -25,6 +25,7 @@ function showClock() {
   document.getElementById("RealtimeClockArea").innerHTML = msg;
 }
 
+
 //神戸市営地下鉄 東行き のダイヤを表示する
 function notice_schedule() {
   //行先と時刻表のリスト
