@@ -1,6 +1,7 @@
 //どちらも1秒ごとに実行
 setInterval('showClock()', 1000);
-setInterval('notice_schedule()', 1000)
+setInterval('notice_schedule()', 1000);
+//notice_fortune();
 
 //60分に一回リロード
 setTimeout(function () {
@@ -80,4 +81,19 @@ function notice_schedule() {
 
     }
   }
+}
+
+function notice_fortune() {
+  //今日の日付を取得してYY/MM/DDの形式に
+  const now = new Date;
+  const today = now.getFullYear() + "/" + (now.getMonth() + 1) + "/" + (now.getDate());
+
+  //request送信、jsonパース
+  const res = fetch("http://api.jugemkey.jp/api/horoscope/free/" + today);
+  const fortune = JSON.parse(res);
+  console.log(fortune["horoscope"][today][0])
+
+  document.getElementById("Fortune1st").innerHTML = fortune["horoscope"][today][0];
+
+
 }
