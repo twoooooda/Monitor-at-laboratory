@@ -22,10 +22,11 @@ jobs:
     - name: Run script
       run: |
         python main.py #メインスクリプトを実行
-    - name: deploy
-      uses: peaceiris/actions-gh-pages@v3
+    - name: Commit files
+      run: |
+        git add json_fortune.josn
+        git commit -m "Add fortune data"
+    - name: Push changes
+      uses: ad-m/github-push-action@main
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_file: json_fortune.json
-        publish_dir: ./data
-        publish_branch: main
