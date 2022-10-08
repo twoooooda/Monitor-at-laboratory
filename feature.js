@@ -99,11 +99,11 @@ function notice_fortune() {
       });
 
       document.getElementById("todaysFortune").innerHTML = "<font color=\"#ff1493\">★" + today + "の占い★</font>";
-      document.getElementById("1stfortune").innerHTML = "<b>1位は" + fortune[0]["sign"] + "</b>！   "
+      document.getElementById("1stfortune").innerHTML = "<font size=\"4\"><b>1位は" + fortune[0]["sign"] + "！</b></font>   "
         + fortune[0]["content"] + "  ラッキーアイテムは<b>" + fortune[0]["item"] + "</b>!";
-      document.getElementById("2ndfortune").innerHTML = "<b>2位は" + fortune[1]["sign"] + "</b>！   "
+      document.getElementById("2ndfortune").innerHTML = "<font size=\"4\"><b>2位は" + fortune[1]["sign"] + "！</b></font>   "
         + fortune[1]["content"] + "  ラッキーアイテムは<b>" + fortune[1]["item"] + "</b>!";
-      document.getElementById("3rdfortune").innerHTML = "<b>3位は" + fortune[2]["sign"] + "</b>！   "
+      document.getElementById("3rdfortune").innerHTML = "<font size=\"4\"><b>3位は" + fortune[2]["sign"] + "！</b></font>   "
         + fortune[2]["content"] + "  ラッキーアイテムは<b>" + fortune[2]["item"] + "</b>!";
 
     })
