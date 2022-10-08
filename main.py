@@ -12,7 +12,7 @@ if str(res.raise_for_status()) == "None":
     with open("json_fortune.json", "w", encoding='utf-8') as f:
         json.dump(results, f)
 else:
-    results = ""
+    results = "error"
     with open("json_fortune.json", "w", encoding='utf-8') as f:
         json.dump(results, f)
     # print(json.dumps(json.loads(res.text), indent=4, ensure_ascii=False))
