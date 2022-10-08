@@ -27,6 +27,7 @@ jobs:
         git add json_fortune.josn
         git commit -m "Add fortune data"
     - name: Push changes
-      uses: ad-m/github-push-action@main
+      uses: ad-m/github-push-action@master
       with:
+        publishbranch: main
         github_token: ${{ secrets.GITHUB_TOKEN }}
