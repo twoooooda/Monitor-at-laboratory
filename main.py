@@ -10,7 +10,7 @@ res = requests.get(url="http://api.jugemkey.jp/api/horoscope/free/" + date)
 if str(res.raise_for_status()) == "None":
     results = json.loads(res.text)
     with open("json_fortune.json", "w", encoding='utf-8') as f:
-        json.dump(results, f)
+        json.dump(results, f, ensure_ascii=False)
 else:
     results = "error"
     with open("json_fortune.json", "w", encoding='utf-8') as f:
