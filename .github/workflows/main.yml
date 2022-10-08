@@ -26,5 +26,6 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_file: json_fortune.json
         publish_dir: ./data
         publish_branch: main
