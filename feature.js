@@ -1,7 +1,7 @@
 //どちらも1秒ごとに実行
 setInterval('showClock()', 1000);
 setInterval('notice_schedule()', 1000);
-//notice_fortune();
+setInterval('notice_fortune()', 1000);
 
 //60分に一回リロード
 setTimeout(function () {
@@ -86,14 +86,26 @@ function notice_schedule() {
 function notice_fortune() {
   //今日の日付を取得してYY/MM/DDの形式に
   const now = new Date;
-  const today = now.getFullYear() + "/" + (now.getMonth() + 1) + "/" + (now.getDate());
+  const today = now.getFullYear() + "/" + (now.getMonth() + 1) + "/" + set2fig(now.getDate());
 
-  //request送信、jsonパース
-  const res = fetch("http://api.jugemkey.jp/api/horoscope/free/" + today);
-  const fortune = JSON.parse(res);
-  console.log(fortune["horoscope"][today][0])
+  //githubからjsonを取得
+  const url = "https://raw.githubusercontent.com/twoooooda/Monitor-at-laboratory/main/getAPI/json_fortune.json";
 
-  document.getElementById("Fortune1st").innerHTML = fortune["horoscope"][today][0];
+  fetch(url)
+    .then(response => response.json())
+    .then(data => { //占いのランキングをソート
+      fortune = data["horoscope"][today].sort(function (a, b) {
+        return (a.rank < b.rank) ? -1 : 1;
+      });
 
+      document.getElementById("todaysFortune").innerHTML = "★" + today + "の占い★";
+      document.getElementById("1stfortune").innerHTML = "1位は<b>" + fortune[0]["sign"] + "</b>！   "
+        + fortune[0]["content"] + "ラッキーアイテムは<b>" + fortune[0]["item"] + "</b>!";
+      document.getElementById("2ndfortune").innerHTML = "2位は<b>" + fortune[1]["sign"] + "</b>！   "
+        + fortune[1]["content"] + "ラッキーアイテムは<b>" + fortune[1]["item"] + "</b>!";
+      document.getElementById("3rdfortune").innerHTML = "3位は<b>" + fortune[2]["sign"] + "</b>！   "
+        + fortune[2]["content"] + "ラッキーアイテムは<b>" + fortune[2]["item"] + "</b>!";
 
+    })
+    .catch(error => console.log("error"));
 }
