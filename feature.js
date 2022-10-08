@@ -98,13 +98,13 @@ function notice_fortune() {
         return (a.rank < b.rank) ? -1 : 1;
       });
 
-      document.getElementById("todaysFortune").innerHTML = "★" + today + "の占い★";
-      document.getElementById("1stfortune").innerHTML = "1位は<b>" + fortune[0]["sign"] + "</b>！   "
-        + fortune[0]["content"] + "ラッキーアイテムは<b>" + fortune[0]["item"] + "</b>!";
-      document.getElementById("2ndfortune").innerHTML = "2位は<b>" + fortune[1]["sign"] + "</b>！   "
-        + fortune[1]["content"] + "ラッキーアイテムは<b>" + fortune[1]["item"] + "</b>!";
-      document.getElementById("3rdfortune").innerHTML = "3位は<b>" + fortune[2]["sign"] + "</b>！   "
-        + fortune[2]["content"] + "ラッキーアイテムは<b>" + fortune[2]["item"] + "</b>!";
+      document.getElementById("todaysFortune").innerHTML = "<font color=\"#ff1493\">★" + today + "の占い★</font>";
+      document.getElementById("1stfortune").innerHTML = "<b>1位は" + fortune[0]["sign"] + "</b>！   "
+        + fortune[0]["content"] + "  ラッキーアイテムは<b>" + fortune[0]["item"] + "</b>!";
+      document.getElementById("2ndfortune").innerHTML = "<b>2位は" + fortune[1]["sign"] + "</b>！   "
+        + fortune[1]["content"] + "  ラッキーアイテムは<b>" + fortune[1]["item"] + "</b>!";
+      document.getElementById("3rdfortune").innerHTML = "<b>3位は" + fortune[2]["sign"] + "</b>！   "
+        + fortune[2]["content"] + "  ラッキーアイテムは<b>" + fortune[2]["item"] + "</b>!";
 
     })
     .catch(error => console.log("error"));
