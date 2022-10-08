@@ -32,6 +32,7 @@ jobs:
         python main.py #メインスクリプトを実行
 
     - name: Commit files
+      if: steps.diff_functions.outputs.diff
       run: |
         git config --local user.name "twoooooda"
         git config --local user.email "yuyatsuda06022@gmail.com"
@@ -39,4 +40,4 @@ jobs:
         git add .
         git commit -m "Add fortune data"
         git push
-      if: steps.diff_functions.outputs.diff
+      
