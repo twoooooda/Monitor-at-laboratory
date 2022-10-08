@@ -1,3 +1,0 @@
-###### Requirements with Version Specifiers ######`
-
-requests == 2.25.1
