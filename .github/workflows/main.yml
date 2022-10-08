@@ -3,7 +3,7 @@ name: Python application
 on: push
 
 jobs:
-  build:
+  getAPI:
 
     runs-on: ubuntu-latest
 
@@ -11,6 +11,15 @@ jobs:
     - uses: actions/checkout@v2
       with:
         token: ${{secrets.GITHUB_TOKEN}}
+
+  # functionに差分があるかチェック
+    - name: Check Diff Functions
+      id: diff_functions
+      uses: technote-space/get-diff-action@v5
+      with:
+      PATTERNS: |
+        *.json
+
     - name: Set up Python 3.8
       uses: actions/setup-python@v1
       with:
@@ -32,3 +41,4 @@ jobs:
         git add .
         git commit -m "Add fortune data"
         git push
+      if: steps.diff_functions.outputs.diff
