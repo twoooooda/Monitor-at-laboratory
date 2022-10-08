@@ -34,12 +34,12 @@ jobs:
     - name: Commit files
       if: steps.diff_functions.outputs.diff
       run: |
-      git config core.filemode false
-      if ! git diff --exit-code --quiet
-      then
-        git config --local user.name "twoooooda"
-        git config --local user.email "yuyatsuda06022@gmail.com"
-        git add .
-        git commit -m "Add fortune data"
-        git push
+        git config core.filemode false
+        if ! git diff --exit-code --quiet
+        then
+          git config --local user.name "twoooooda"
+          git config --local user.email "yuyatsuda06022@gmail.com"
+          git add .
+          git commit -m "Add fortune data"
+          git push
       
