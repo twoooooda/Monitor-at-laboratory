@@ -23,12 +23,14 @@ jobs:
       run: |
         python main.py #メインスクリプトを実行
 
-    - name: Commit files 
-      with: 
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Commit files
+    - uses: actions/checkout@master
       run: |
         git add json_fortune.json
-        git commit -m "Add fortune data"
+        git commit -m "Add fortune data" 
+      with: 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+      
       
 
     - name: Push changes
