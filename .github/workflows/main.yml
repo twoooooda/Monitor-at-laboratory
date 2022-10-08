@@ -16,9 +16,7 @@ jobs:
     - name: Check Diff Functions
       id: diff_functions
       uses: technote-space/get-diff-action@v5
-      with:
-      PATTERNS: |
-        *.json
+
 
     - name: Set up Python 3.8
       uses: actions/setup-python@v1
