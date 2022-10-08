@@ -25,11 +25,8 @@ jobs:
 
     - name: Commit files
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name twoooooda
-        git add json_fortune.json
+        git config --global user.email ${{ secrets.EMAIL }}
+        git config --global user.name ${{ secrets.NAME }}
+        git add .
         git commit -m "Add fortune data"
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        git push origin main
