@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>研究室モニター</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css">
+
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons-wind.css">
+
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+  <!--フォント関係-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- コンテナ -->
+  <div class="container">
+
+    <!-- 現在時刻と次の電車 -->
+    <div class="item1">
+      <font size="6">
+        <p id="RealtimeClockArea"></p>
+        <p id="NextTrain1"></p>
+        <p id="NextTrain2"></p>
+      </font>
+    </div>
+
+    <!-- <img src="./data/station_info/Chikatetu_schedule.png"> -->
+
+    <!---youtube埋め込み-->
+    <div class="item2">
+      <iframe width="672" height="360" src="https://www.youtube.com/embed/coYw-eVU0Ks?autoplay=1&mute=1"
+        title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+
+    <!--天気予報埋め込み-->
+    <div class="item3">
+      <div id="weather-wrapper">
+        <div id="weather1"></div>
+        <div id="weather2"></div>
+      </div>
+    </div>
+
+    <!--募集中コンテンツ-->
+    <div class="item4">
+      <p>テナント募集中</p>
+    </div>
+
+    <!--バナー-->
+    <div class="item5">
+      <div class="news-banner">
+        <div class="news-banner__content">
+          <h1>10/3_後期授業開始　10/10_<font color="red">スポーツの日</font>、学部履修登録締め切り　10/14_研究科履修登録締め切り　</h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script type="text/javascript" src="feature.js" charset="utf-8"></script>
+</body>
+
+
+<!--天気予報のコード-->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script
+  type="text/javascript">weather_value = 7; lat = 34.68325; lon = 134.981628; inputText1 = "兵庫県神戸市西区"; search_add = "兵庫県神戸市西区";</script>
+<script src="https://sitecreation.co.jp/wp-content/themes/emanon-premium-child/tpl/weather.js"></script>
+<link id="PageStyleSheet" rel="stylesheet"
+  href="https://sitecreation.co.jp/wp-content/themes/emanon-premium-child/tpl/style.css">
+
+
+</html>
