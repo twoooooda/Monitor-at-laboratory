@@ -30,4 +30,4 @@ jobs:
         
         git add .
         git commit -m "Add fortune data"
-        git push origin main
+        git push
