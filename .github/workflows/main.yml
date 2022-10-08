@@ -25,6 +25,8 @@ jobs:
 
     - name: Commit files
       run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name twoooooda
         git add json_fortune.json
         git commit -m "Add fortune data"
     - name: Push changes
