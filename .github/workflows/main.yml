@@ -22,6 +22,8 @@ jobs:
     - name: Run script
       run: |
         python main.py #メインスクリプトを実行
+
+    - uses: actions/checkout@master    
     - name: Commit files
       run: |
         git add json_fortune.json
@@ -29,5 +31,5 @@ jobs:
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
-        publishbranch: main
+        publish_branch: main
         github_token: ${{ secrets.GITHUB_TOKEN }}
