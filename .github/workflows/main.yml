@@ -21,6 +21,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run script
       run: |
+        cd getAPI
         python main.py #メインスクリプトを実行
 
     - name: Commit files
