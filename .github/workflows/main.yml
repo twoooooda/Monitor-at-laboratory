@@ -4,7 +4,8 @@ on:
   schedule:
     - cron:  '*/3 * * * *'
 
-  push
+  push:
+    branches: [main]
 
   workflow_disoatch:
     branches: [main]
