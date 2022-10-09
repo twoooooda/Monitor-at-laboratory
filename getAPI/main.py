@@ -11,10 +11,17 @@ if str(res.raise_for_status()) == "None":
     results = json.loads(res.text)
     with open("json_fortune.json", "w", encoding='utf-8') as f:
         json.dump(results, f, ensure_ascii=False)
+
+    # 現在時刻を書き込むことで強制的に差分を生ませる
+    f = open("nowtime.txt", "w")
+    f.write(datetime.datetime.now().strftime("%Y/%m/%d/%H:%M:%S"))
+    f.close()
 else:
     results = "error"
     with open("json_fortune.json", "w", encoding='utf-8') as f:
         json.dump(results, f)
-    # print(json.dumps(json.loads(res.text), indent=4, ensure_ascii=False))
-    # #たとえば、牡羊座のみ取得したい場合
-    # print(res.json()["horoscope"][date][0])
+
+    # 現在時刻を書き込むことで強制的に差分を生ませる
+    f = open("nowtime.txt", "w")
+    f.write(datetime.datetime.now().strftime("%Y/%m/%d/%H:%M:%S"))
+    f.close()
