@@ -1,8 +1,6 @@
 name: Python application
 
-on:
-  schedule:
-    - cron:  '*/1 * * * *'
+on: push
 
 jobs:
   getAPI:
@@ -30,7 +28,7 @@ jobs:
     - name: Commit files
       run: |
         git config core.filemode false
-        if ! git diff --exit-code --quiet #差分がある場合だけコミット
+        if git diff --exit-code --quiet #差分がある場合だけコミット
         then
           git config --local user.name "twoooooda"
           git config --local user.email "yuyatsuda06022@gmail.com"
