@@ -27,13 +27,13 @@ jobs:
 
     - name: Commit files
       run: |
-        git config core.filemode false
-        if git diff --exit-code --quiet #差分がある場合だけコミット
-        then
+        # git config core.filemode false
+        # if git diff --exit-code --quiet #差分がある場合だけコミット
+        # then
           git config --local user.name "twoooooda"
           git config --local user.email "yuyatsuda06022@gmail.com"
           git add .
           git commit -m "Add fortune data"
           git push
-        fi
+        # fi
       
