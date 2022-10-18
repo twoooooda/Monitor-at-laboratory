@@ -2,7 +2,7 @@ name: Python application
 
 on:
   schedule:
-    - cron:  '*/3 * * * *'
+    - cron:  '* 0 * * *' #毎日0時に実行
 
   push:
     branches: [main]
