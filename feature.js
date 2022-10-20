@@ -110,17 +110,17 @@ function notice_fortune() {
       document.getElementById("1stfortune").innerHTML = "<font size=\"4\"><b>" + String(n*3+1) + "位は" 
         + fortune[n*3]["sign"] + "！</b></font>   "
         + fortune[n*3]["content"] 
-        + "  ラッキーアイテムは<b>" + fortune[0]["item"] + "</b>!";
+        + "  ラッキーアイテムは<b>" + fortune[n*3]["item"] + "</b>!";
 
       document.getElementById("2ndfortune").innerHTML = "<font size=\"4\"><b>" + String(n*3+2) + "位は" 
         + fortune[n*3+1]["sign"] + "！</b></font>   "
         + fortune[n*3+1]["content"] 
-        + "  ラッキーアイテムは<b>" + fortune[1]["item"] + "</b>!";
+        + "  ラッキーアイテムは<b>" + fortune[n*3+1]["item"] + "</b>!";
 
       document.getElementById("3rdfortune").innerHTML = "<font size=\"4\"><b>" + String(n*3+3) + "位は" 
         + fortune[n*3+2]["sign"] + "！</b></font>   "
         + fortune[n*3+2]["content"] 
-        + "  ラッキーアイテムは<b>" + fortune[2]["item"] + "</b>!";
+        + "  ラッキーアイテムは<b>" + fortune[n*3+2]["item"] + "</b>!";
 
     })
     .catch(error => console.log("error"));
