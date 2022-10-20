@@ -3,6 +3,7 @@ setInterval('showClock()', 1000);
 setInterval('notice_schedule()', 1000);
 setInterval('notice_fortune()', 1000);
 
+notice_fortune();
 //60分に一回リロード
 setTimeout(function () {
   location.reload();
@@ -84,8 +85,14 @@ function notice_schedule() {
 }
 
 function notice_fortune() {
-  //今日の日付を取得してYY/MM/DDの形式に
+  var n
   const now = new Date;
+  var nowminute = now.getMinutes();
+
+  n = nowminute % 4;
+
+
+  //今日の日付を取得してYY/MM/DDの形式に
   const today = now.getFullYear() + "/" + (now.getMonth() + 1) + "/" + set2fig(now.getDate());
 
   //githubからjsonを取得
@@ -99,12 +106,21 @@ function notice_fortune() {
       });
 
       document.getElementById("todaysFortune").innerHTML = "<font color=\"#ff1493\">★" + today + "の占い★</font>";
-      document.getElementById("1stfortune").innerHTML = "<font size=\"4\"><b>1位は" + fortune[0]["sign"] + "！</b></font>   "
-        + fortune[0]["content"] + "  ラッキーアイテムは<b>" + fortune[0]["item"] + "</b>!";
-      document.getElementById("2ndfortune").innerHTML = "<font size=\"4\"><b>2位は" + fortune[1]["sign"] + "！</b></font>   "
-        + fortune[1]["content"] + "  ラッキーアイテムは<b>" + fortune[1]["item"] + "</b>!";
-      document.getElementById("3rdfortune").innerHTML = "<font size=\"4\"><b>3位は" + fortune[2]["sign"] + "！</b></font>   "
-        + fortune[2]["content"] + "  ラッキーアイテムは<b>" + fortune[2]["item"] + "</b>!";
+
+      document.getElementById("1stfortune").innerHTML = "<font size=\"4\"><b>" + String(n*3+1) + "位は" 
+        + fortune[n*3]["sign"] + "！</b></font>   "
+        + fortune[n*3]["content"] 
+        + "  ラッキーアイテムは<b>" + fortune[0]["item"] + "</b>!";
+
+      document.getElementById("2ndfortune").innerHTML = "<font size=\"4\"><b>" + String(n*3+2) + "位は" 
+        + fortune[n*3+1]["sign"] + "！</b></font>   "
+        + fortune[n*3+1]["content"] 
+        + "  ラッキーアイテムは<b>" + fortune[1]["item"] + "</b>!";
+
+      document.getElementById("3rdfortune").innerHTML = "<font size=\"4\"><b>" + String(n*3+3) + "位は" 
+        + fortune[n*3+2]["sign"] + "！</b></font>   "
+        + fortune[n*3+2]["content"] 
+        + "  ラッキーアイテムは<b>" + fortune[2]["item"] + "</b>!";
 
     })
     .catch(error => console.log("error"));
