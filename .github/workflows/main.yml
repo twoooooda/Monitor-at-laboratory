@@ -2,7 +2,7 @@ name: Python application
 
 on:
   schedule:
-    - cron:  '* */8 * * *' #イギリス時間で毎日16時（日本は25時）に実行
+    - cron:  '* 0 * * *' #イギリス時間で毎日0時（日本は9時）に実行
 
   push:
     branches: [main]
