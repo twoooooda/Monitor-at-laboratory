@@ -39,7 +39,7 @@ jobs:
         # if git diff --exit-code --quiet #差分がある場合だけコミット（上手く動かないので一旦保留）
         # then
           git config --local user.name "twoooooda"
-          git config --local user.email "example@gmail.com"
+          git config --local user.email "yuuyatsuda0602@gmail.com"
           git add .
           git commit -m "Add fortune data"
           git push
