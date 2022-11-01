@@ -2,7 +2,7 @@ name: Python application
 
 on:
   schedule:
-    - cron:  '* 0 * * *' #イギリス時間で毎日0時（日本は9時）に実行
+    - cron:  '* 23 * * *' #イギリス時間で毎日23時（日本は8時）に実行してほしい。が、1～2時間くらい遅れる計算
 
   push:
     branches: [main]
