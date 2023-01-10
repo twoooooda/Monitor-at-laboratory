@@ -123,5 +123,5 @@ function notice_fortune() {
         + "  ラッキーアイテムは<b>" + fortune[n*3+2]["item"] + "</b>!";
 
     })
-    .catch(error => console.log("error"));
+    .catch(error => console.log(error));
 }
