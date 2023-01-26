@@ -98,7 +98,7 @@ function notice_cleaningDuty()
     const fortune = data["member"];
 
     //変数がおかしいけど今は気にしない
-    document.getElementById("todaysFortune").innerHTML = "<font size=\"15\" color=\"#ff1493\">" 
+    document.getElementById("todaysFortune").innerHTML = "<font size=\"125\" color=\"#ff1493\">" 
       + fortune 
       + "さん         </font>"
       + "<font size=\"8\">"
