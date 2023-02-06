@@ -6,7 +6,7 @@ date = datetime.datetime.today().strftime("%Y/%m/%d")
 
 # 占いを叩いてた時 http://api.jugemkey.jp/api/horoscope/year/month/day の形式
 #掃除当番APIを叩く
-res = requests.get(url="https://script.google.com/macros/s/AKfycbxFxnuPNfkWqj_OhL1h68rNeRA0wZDb0v6VZLlTqDrPy_Ah9p2-PAetaISSzcWB8eee/exec")
+res = requests.get(url="https://script.google.com/macros/s/AKfycbzRi4QqDpCxY1inNFO8EFLxaI8l0616qny_M8EGPTQqV22PJpz4yQfsY6nBQ-Uepr-W/exec")
 
 if str(res.raise_for_status()) == "None":
     results = json.loads(res.text)
