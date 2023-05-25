@@ -39,6 +39,7 @@ h1 {
 
 /*天気予報*/
 .item3 {
+    background-color: #e6e6fa;
     grid-row: 2 / 3;
     /*アイテムの配置位置を「行方向：ライン番号１から2の間」に指定*/
     grid-column: 1 / 2;

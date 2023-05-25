@@ -3,8 +3,37 @@ setInterval('showClock()', 1000);
 setInterval('notice_schedule()', 1000);
 //setInterval('notice_fortune()', 1000);
 setInterval('notice_cleaningDuty()', 1000);
+notice_RSSNews()
 
-notice_fortune();
+function notice_RSSNews() {
+  let viewXML = (xmlDocument) => {
+    //取得した文字列をコンソール出力
+    console.log(xmlDocument);
+
+    //XML形式に変換
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(xmlDocument, "text/xml");
+    let rss = doc.documentElement.getElementsByTagName("item");
+
+    //HTMLタグの作成
+    for (let i = 0; i < 6; i++) {
+      //RSSから取得したタイトルとリンク情報を格納
+      let rssTitle = rss[i].getElementsByTagName("title")[0].textContent;
+      let rssLink = rss[i].getElementsByTagName("link")[0].textContent;
+
+      //テンプレート文字列を使ってアンカータグを作成
+      const tagString = `<a href="${rssLink}">${rssTitle}</a><br/>`;
+
+      //タグに出力
+      document.getElementById("RSSNewsFeed").innerHTML += "・" + tagString;
+    }
+  };
+  const URL = 'https://www.nhk.or.jp/rss/news/cat3.xml';
+  fetch(URL)
+    .then(response => response.text())
+    .then(xmlData => viewXML(xmlData));
+}
+
 //60分に一回リロード
 setTimeout(function () {
   location.reload();
@@ -87,26 +116,24 @@ function notice_schedule() {
 
 
 //掃除当番お知らせ関数
-function notice_cleaningDuty()
-{
+function notice_cleaningDuty() {
   //gasのリンク（狭間さん担当）
   const url = "https://raw.githubusercontent.com/twoooooda/Monitor-at-laboratory/main/getAPI/json_fortune.json";
 
   fetch(url)
-  .then(response => response.json())
-  .then(data => { 
-    const fortune = data["member"];
+    .then(response => response.json())
+    .then(data => {
+      const fortune = data["member"];
 
-    //変数がおかしいけど今は気にしない
-    document.getElementById("todaysFortune").innerHTML = "<font size=\"125\" color=\"#ff1493\">" 
-      + fortune 
-      + "さん         </font>"
-      + "<font size=\"8\">"
-      + "です。</font>";
+      //変数がおかしいけど今は気にしない
+      document.getElementById("todaysFortune").innerHTML = "<font size=\"7\" color=\"#ff1493\">"
+        + fortune
+        + "さん</font>"
+        + "です。";
 
 
-  })
-  .catch(error => console.log(error));
+    })
+    .catch(error => console.log(error));
 }
 
 //占いお知らせ関数
@@ -133,20 +160,20 @@ function notice_fortune() {
 
       document.getElementById("todaysFortune").innerHTML = "<font color=\"#ff1493\">★" + today + "の占い★</font>";
 
-      document.getElementById("1stfortune").innerHTML = "<font size=\"4\"><b>" + String(n*3+1) + "位は" 
-        + fortune[n*3]["sign"] + "！</b></font>   "
-        + fortune[n*3]["content"] 
-        + "  ラッキーアイテムは<b>" + fortune[n*3]["item"] + "</b>!";
+      document.getElementById("1stfortune").innerHTML = "<font size=\"4\"><b>" + String(n * 3 + 1) + "位は"
+        + fortune[n * 3]["sign"] + "！</b></font>   "
+        + fortune[n * 3]["content"]
+        + "  ラッキーアイテムは<b>" + fortune[n * 3]["item"] + "</b>!";
 
-      document.getElementById("2ndfortune").innerHTML = "<font size=\"4\"><b>" + String(n*3+2) + "位は" 
-        + fortune[n*3+1]["sign"] + "！</b></font>   "
-        + fortune[n*3+1]["content"] 
-        + "  ラッキーアイテムは<b>" + fortune[n*3+1]["item"] + "</b>!";
+      document.getElementById("2ndfortune").innerHTML = "<font size=\"4\"><b>" + String(n * 3 + 2) + "位は"
+        + fortune[n * 3 + 1]["sign"] + "！</b></font>   "
+        + fortune[n * 3 + 1]["content"]
+        + "  ラッキーアイテムは<b>" + fortune[n * 3 + 1]["item"] + "</b>!";
 
-      document.getElementById("3rdfortune").innerHTML = "<font size=\"4\"><b>" + String(n*3+3) + "位は" 
-        + fortune[n*3+2]["sign"] + "！</b></font>   "
-        + fortune[n*3+2]["content"] 
-        + "  ラッキーアイテムは<b>" + fortune[n*3+2]["item"] + "</b>!";
+      document.getElementById("3rdfortune").innerHTML = "<font size=\"4\"><b>" + String(n * 3 + 3) + "位は"
+        + fortune[n * 3 + 2]["sign"] + "！</b></font>   "
+        + fortune[n * 3 + 2]["content"]
+        + "  ラッキーアイテムは<b>" + fortune[n * 3 + 2]["item"] + "</b>!";
 
     })
     .catch(error => console.log(error));
