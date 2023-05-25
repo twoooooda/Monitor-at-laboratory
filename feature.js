@@ -5,34 +5,6 @@ setInterval('notice_schedule()', 1000);
 setInterval('notice_cleaningDuty()', 1000);
 notice_RSSNews()
 
-function notice_RSSNews() {
-  let viewXML = (xmlDocument) => {
-    //取得した文字列をコンソール出力
-    console.log(xmlDocument);
-
-    //XML形式に変換
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(xmlDocument, "text/xml");
-    let rss = doc.documentElement.getElementsByTagName("item");
-
-    //HTMLタグの作成
-    for (let i = 0; i < 6; i++) {
-      //RSSから取得したタイトルとリンク情報を格納
-      let rssTitle = rss[i].getElementsByTagName("title")[0].textContent;
-      let rssLink = rss[i].getElementsByTagName("link")[0].textContent;
-
-      //テンプレート文字列を使ってアンカータグを作成
-      const tagString = `<a href="${rssLink}">${rssTitle}</a><br/>`;
-
-      //タグに出力
-      document.getElementById("RSSNewsFeed").innerHTML += "・" + tagString;
-    }
-  };
-  const URL = 'https://www.nhk.or.jp/rss/news/cat3.xml';
-  fetch(URL)
-    .then(response => response.text())
-    .then(xmlData => viewXML(xmlData));
-}
 
 //60分に一回リロード
 setTimeout(function () {
@@ -134,6 +106,35 @@ function notice_cleaningDuty() {
 
     })
     .catch(error => console.log(error));
+}
+
+function notice_RSSNews() {
+  let viewXML = (xmlDocument) => {
+    //取得した文字列をコンソール出力
+    console.log(xmlDocument);
+
+    //XML形式に変換
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(xmlDocument, "text/xml");
+    let rss = doc.documentElement.getElementsByTagName("item");
+
+    //HTMLタグの作成
+    for (let i = 0; i < 6; i++) {
+      //RSSから取得したタイトルとリンク情報を格納
+      let rssTitle = rss[i].getElementsByTagName("title")[0].textContent;
+      let rssLink = rss[i].getElementsByTagName("link")[0].textContent;
+
+      //テンプレート文字列を使ってアンカータグを作成
+      const tagString = `<a href="${rssLink}">${rssTitle}</a><br/>`;
+
+      //タグに出力
+      document.getElementById("RSSNewsFeed").innerHTML += "・" + tagString;
+    }
+  };
+  const URL = 'https://www.nhk.or.jp/rss/news/cat3.xml';
+  fetch(URL)
+    .then(response => response.text())
+    .then(xmlData => viewXML(xmlData));
 }
 
 //占いお知らせ関数
