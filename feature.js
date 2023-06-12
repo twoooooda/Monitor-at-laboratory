@@ -129,13 +129,16 @@ function notice_LabSchedule() {
           + elem["month"] 
           + "/" 
           + elem["date"]
+          + "（" + elem["day"] + "）"
           + "</font>" 
           + "：" 
           + elem["title"];
 
           //先頭の<br>を削除したい
           if(temp_day == 0){
-            var temp = document.getElementById("Lab_schedule").innerHTML.replace("<br>", "");
+            var temp = document.getElementById("Lab_schedule").innerHTML;
+            temp = temp.replace("<br>", "");
+            document.getElementById("Lab_schedule").innerHTML = temp;
           }
 
           temp_day = elem["date"];
