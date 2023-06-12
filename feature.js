@@ -2,7 +2,7 @@
 setInterval('showClock()', 1000);
 setInterval('notice_schedule()', 1000);
 //setInterval('notice_fortune()', 1000);
-setInterval('notice_cleaningDuty()', 1000);
+notice_cleaningDuty();
 notice_RSSNews();
 notice_LabSchedule();
 
@@ -134,6 +134,10 @@ function notice_LabSchedule() {
           + "</font>" 
           + "：" 
           + elem["title"];
+
+          if(temp_day == 0){
+            document.getElementById("Lab_schedule").innerHTML.replace("<br>", "");
+          }
 
           temp_day = elem["date"];
         }
