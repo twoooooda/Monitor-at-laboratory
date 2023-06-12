@@ -3,7 +3,8 @@ setInterval('showClock()', 1000);
 setInterval('notice_schedule()', 1000);
 //setInterval('notice_fortune()', 1000);
 setInterval('notice_cleaningDuty()', 1000);
-notice_RSSNews()
+notice_RSSNews();
+notice_LabSchedule();
 
 
 //60分に一回リロード
@@ -108,6 +109,49 @@ function notice_cleaningDuty() {
     .catch(error => console.log(error));
 }
 
+
+//研究室のスケジュールお知らせ関数
+function notice_LabSchedule() {
+  //gasのリンク（狭間さん担当）
+  const url_schedule = "https://script.google.com/macros/s/AKfycbyJTAp-shF-JjQnkBBLgs_M52ar9th_Zwg8JuW_ZQRwatRuOd6bGdaUdLtF-pq_MNU/exec";
+
+  fetch(url_schedule)
+    .then(response => response.json())
+    .then(data => {
+      var schedule = new Array(data["event"].length);
+      schedule = data["event"];
+
+      var temp_day = 0;
+
+      //eventから要素を抽出
+      schedule.forEach(function(elem){
+        //日が変わる場合
+        if(temp_day != elem["date"]){
+          document.getElementById("Lab_schedule").innerHTML += "<br>" + "<font color=\"#ff1493\">" 
+          + elem["month"] 
+          + "/" 
+          + elem["date"]
+          + "</font>" 
+          + "：" 
+          + elem["title"];
+
+          temp_day = elem["date"];
+        }
+
+        //日が変わらない場合
+        else{
+          document.getElementById("Lab_schedule").innerHTML += "、" + elem["title"];
+        }
+      });
+      
+
+
+    })
+    .catch(error => console.log(error));
+}
+
+
+//NHKニュースのRSS受信用の関数
 function notice_RSSNews() {
   let viewXML = (xmlDocument) => {
     //取得した文字列をコンソール出力
@@ -125,10 +169,10 @@ function notice_RSSNews() {
       let rssLink = rss[i].getElementsByTagName("link")[0].textContent;
 
       //テンプレート文字列を使ってアンカータグを作成
-      const tagString = `<a href="${rssLink}">${rssTitle}</a><br/>`;
+      const tagString = `<a href="${rssLink}">${rssTitle}</a>`;
 
       //タグに出力
-      document.getElementById("RSSNewsFeed").innerHTML += "・" + tagString;
+      document.getElementById("RSSNewsFeed").innerHTML += "・" + tagString + "  ";
     }
   };
   const URL = 'https://www.nhk.or.jp/rss/news/cat3.xml';
@@ -137,7 +181,8 @@ function notice_RSSNews() {
     .then(xmlData => viewXML(xmlData));
 }
 
-//占いお知らせ関数
+
+//占いお知らせ関数（アーカイブ）
 function notice_fortune() {
   var n
   const now = new Date;
