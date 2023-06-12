@@ -131,7 +131,7 @@ function notice_LabSchedule() {
           + elem["date"]
           + "（" + elem["day"] + "）"
           + "</font>" 
-          + "：" 
+          + ": " 
           + elem["title"];
 
           //先頭の<br>を削除したい
