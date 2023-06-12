@@ -103,8 +103,6 @@ function notice_cleaningDuty() {
         + fortune
         + "さん</font>"
         + "です。";
-
-
     })
     .catch(error => console.log(error));
 }
@@ -135,8 +133,9 @@ function notice_LabSchedule() {
           + "：" 
           + elem["title"];
 
+          //先頭の<br>を削除したい
           if(temp_day == 0){
-            document.getElementById("Lab_schedule").innerHTML.replace("<br>", "");
+            var temp = document.getElementById("Lab_schedule").innerHTML.replace("<br>", "");
           }
 
           temp_day = elem["date"];
@@ -147,9 +146,6 @@ function notice_LabSchedule() {
           document.getElementById("Lab_schedule").innerHTML += "、" + elem["title"];
         }
       });
-      
-
-
     })
     .catch(error => console.log(error));
 }
