@@ -90,7 +90,7 @@ function notice_schedule() {
 //掃除当番お知らせ関数
 function notice_cleaningDuty() {
   //gasのリンク（狭間さん担当）
-  const url = "https://raw.githubusercontent.com/twoooooda/Monitor-at-laboratory/main/getAPI/json_fortune.json";
+  const url = "https://script.google.com/macros/s/AKfycbyhWnXMxLbKdVmWcFmMY-SWhYruRU8HqSdxOuVWKej9iCuEnfGfPJiyILGYvMXG3FIE/exec";
 
   fetch(url)
     .then(response => response.json())
